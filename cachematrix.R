@@ -1,8 +1,8 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
-
+## This function creates an object that is a wrapper around the given Matrix. 
+## It stores the matrix and the inverse of the matrix in a cache. 
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
     set <- function(y) {
@@ -25,9 +25,10 @@ makeCacheMatrix <- function(x = matrix()) {
     list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
-
-## Write a short comment describing this function
-
+## This function takes in an object of the Matrix wrapper from makeCacheMatrix function
+## and gets the Inverse of the Matrix. If there is nothing in the cache, then this 
+## function will calculate the inverse, assign it to the Matrix wrapper object and 
+## then try to get the inverse again from the cache. 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     i <- x$getInverse()
@@ -39,5 +40,6 @@ cacheSolve <- function(x, ...) {
 
     i <- solve(x$get())
     x$setInverse(i)
-    i
+    # Return the inverse from the cache
+    x$getInverse()
 }
